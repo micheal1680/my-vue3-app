@@ -83,7 +83,7 @@ const scrollToSection = (id) => {
 .footer {
   background: #2c3e50;
   color: white;
-  padding: 60px 20px 30px;
+  padding: clamp(40px, 8vw, 60px) 20px clamp(20px, 4vw, 30px);
 }
 
 .container {
@@ -94,41 +94,41 @@ const scrollToSection = (id) => {
 .footer-content {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 40px;
+  gap: clamp(24px, 4vw, 40px);
+  margin-bottom: clamp(30px, 5vw, 40px);
 }
 
 .footer-logo {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 24px;
+  font-size: clamp(1.1rem, 2vw, 24px);
   font-weight: 700;
   margin-bottom: 16px;
 }
 
 .logo-icon {
-  width: 32px;
-  height: 32px;
+  width: clamp(24px, 4vw, 32px);
+  height: clamp(24px, 4vw, 32px);
 }
 
 .footer-description {
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1.2vw, 14px);
   color: #bdc3c7;
   line-height: 1.6;
   margin: 0 0 16px;
 }
 
 .footer-copyright {
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1.2vw, 14px);
   color: #95a5a6;
   margin: 0;
 }
 
 .footer-title {
-  font-size: 18px;
+  font-size: clamp(0.9rem, 1.5vw, 18px);
   font-weight: 600;
-  margin: 0 0 20px;
+  margin: 0 0 clamp(16px, 3vw, 20px);
   color: white;
 }
 
@@ -139,7 +139,7 @@ const scrollToSection = (id) => {
 }
 
 .footer-links li {
-  margin-bottom: 12px;
+  margin-bottom: clamp(10px, 2vw, 12px);
 }
 
 .footer-link {
@@ -147,7 +147,7 @@ const scrollToSection = (id) => {
   text-decoration: none;
   cursor: pointer;
   transition: color 0.3s ease;
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1.2vw, 14px);
 }
 
 .footer-link:hover {
@@ -155,15 +155,16 @@ const scrollToSection = (id) => {
 }
 
 .footer-contact p {
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1.2vw, 14px);
   color: #bdc3c7;
   margin: 12px 0;
   line-height: 1.6;
+  word-break: break-all;
 }
 
 .footer-bottom {
   border-top: 1px solid #34495e;
-  padding-top: 30px;
+  padding-top: clamp(20px, 4vw, 30px);
   text-align: center;
 }
 
@@ -171,10 +172,10 @@ const scrollToSection = (id) => {
   background: #3498db;
   color: white;
   border: none;
-  padding: 12px 24px;
+  padding: clamp(10px, 2vw, 12px) clamp(20px, 3vw, 24px);
   border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.5vw, 16px);
   font-weight: 500;
   display: inline-flex;
   align-items: center;
@@ -187,9 +188,16 @@ const scrollToSection = (id) => {
   transform: translateY(-2px);
 }
 
+@media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
 @media (max-width: 768px) {
   .footer {
-    padding: 40px 20px 20px;
+    padding: 40px 12px 20px;
   }
 
   .footer-content {
@@ -199,6 +207,12 @@ const scrollToSection = (id) => {
 
   .footer-bottom {
     padding-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 10px 16px;
   }
 }
 </style>

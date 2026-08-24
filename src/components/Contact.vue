@@ -166,7 +166,7 @@ const contactInfo = [
 
 <style scoped>
 .contact {
-  padding: 100px 20px;
+  padding: clamp(60px, 10vw, 100px) 20px;
   background: #f8f9fa;
 }
 
@@ -177,18 +177,19 @@ const contactInfo = [
 
 .section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: clamp(40px, 6vw, 60px);
 }
 
 .section-title {
-  font-size: 42px;
+  font-size: clamp(1.75rem, 4vw, 42px);
   font-weight: 700;
   color: #2c3e50;
   margin: 0 0 16px;
+  line-height: 1.2;
 }
 
 .section-subtitle {
-  font-size: 18px;
+  font-size: clamp(0.9rem, 2vw, 18px);
   color: #666;
   margin: 0;
 }
@@ -196,23 +197,23 @@ const contactInfo = [
 .contact-content {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  gap: 40px;
+  gap: clamp(24px, 4vw, 40px);
 }
 
 .contact-form-wrapper {
   background: white;
-  padding: 40px;
+  padding: clamp(24px, 4vw, 40px);
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .form-group {
-  margin-bottom: 24px;
+  margin-bottom: clamp(16px, 3vw, 24px);
 }
 
 .form-label {
   display: block;
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.5vw, 16px);
   font-weight: 600;
   color: #2c3e50;
   margin-bottom: 8px;
@@ -221,10 +222,10 @@ const contactInfo = [
 .form-input,
 .form-textarea {
   width: 100%;
-  padding: 12px 16px;
+  padding: clamp(10px, 2vw, 12px) clamp(12px, 2vw, 16px);
   border: 2px solid #e0e0e0;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.5vw, 16px);
   transition: all 0.3s ease;
   box-sizing: border-box;
 }
@@ -239,16 +240,17 @@ const contactInfo = [
 .form-textarea {
   resize: vertical;
   font-family: inherit;
+  min-height: 100px;
 }
 
 .submit-btn {
   width: 100%;
-  padding: 16px;
+  padding: clamp(12px, 2vw, 16px);
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 18px;
+  font-size: clamp(0.9rem, 2vw, 18px);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -261,23 +263,23 @@ const contactInfo = [
 
 .contact-info-wrapper {
   background: white;
-  padding: 40px;
+  padding: clamp(24px, 4vw, 40px);
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .info-title {
-  font-size: 24px;
+  font-size: clamp(1.1rem, 2vw, 24px);
   font-weight: 600;
   color: #2c3e50;
-  margin: 0 0 30px;
+  margin: 0 0 clamp(20px, 3vw, 30px);
 }
 
 .info-item {
   display: flex;
-  gap: 16px;
-  margin-bottom: 24px;
-  padding-bottom: 24px;
+  gap: clamp(12px, 2vw, 16px);
+  margin-bottom: clamp(16px, 3vw, 24px);
+  padding-bottom: clamp(16px, 3vw, 24px);
   border-bottom: 1px solid #eee;
 }
 
@@ -286,7 +288,7 @@ const contactInfo = [
 }
 
 .info-icon {
-  font-size: 32px;
+  font-size: clamp(24px, 4vw, 32px);
   flex-shrink: 0;
 }
 
@@ -295,41 +297,42 @@ const contactInfo = [
 }
 
 .info-label {
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.5vw, 16px);
   font-weight: 600;
   color: #2c3e50;
   margin: 0 0 4px;
 }
 
 .info-text {
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.5vw, 16px);
   color: #3498db;
   margin: 0 0 4px;
   font-weight: 500;
+  word-break: break-all;
 }
 
 .info-subtext {
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1.2vw, 14px);
   color: #999;
   margin: 0;
 }
 
 .working-hours {
   background: #f8f9fa;
-  padding: 20px;
+  padding: clamp(16px, 3vw, 20px);
   border-radius: 12px;
-  margin-top: 30px;
+  margin-top: clamp(20px, 3vw, 30px);
 }
 
 .working-hours h4 {
-  font-size: 18px;
+  font-size: clamp(0.9rem, 1.5vw, 18px);
   font-weight: 600;
   color: #2c3e50;
   margin: 0 0 12px;
 }
 
 .working-hours p {
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1.2vw, 14px);
   color: #666;
   margin: 8px 0;
   line-height: 1.6;
@@ -337,194 +340,29 @@ const contactInfo = [
 
 @media (max-width: 1024px) {
   .contact {
-    padding: 80px 20px;
-  }
-
-  .section-title {
-    font-size: 38px;
-  }
-
-  .section-subtitle {
-    font-size: 16px;
+    padding: 80px 16px;
   }
 
   .contact-content {
     grid-template-columns: 1.2fr 1fr;
     gap: 30px;
   }
-
-  .contact-form-wrapper,
-  .contact-info-wrapper {
-    padding: 32px;
-  }
 }
 
 @media (max-width: 768px) {
   .contact {
-    padding: 60px 16px;
-  }
-
-  .section-header {
-    margin-bottom: 40px;
-  }
-
-  .section-title {
-    font-size: 28px;
-  }
-
-  .section-subtitle {
-    font-size: 15px;
+    padding: 60px 12px;
   }
 
   .contact-content {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-
-  .contact-form-wrapper,
-  .contact-info-wrapper {
-    padding: 24px;
-  }
-
-  .form-group {
-    margin-bottom: 20px;
-  }
-
-  .form-label {
-    font-size: 15px;
-    margin-bottom: 6px;
-  }
-
-  .form-input,
-  .form-textarea {
-    padding: 10px 14px;
-    font-size: 15px;
-  }
-
-  .submit-btn {
-    padding: 14px;
-    font-size: 16px;
-  }
-
-  .info-title {
-    font-size: 20px;
-    margin-bottom: 24px;
-  }
-
-  .info-item {
-    gap: 12px;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-  }
-
-  .info-icon {
-    font-size: 28px;
-  }
-
-  .info-label {
-    font-size: 15px;
-  }
-
-  .info-text {
-    font-size: 15px;
-  }
-
-  .info-subtext {
-    font-size: 13px;
-  }
-
-  .working-hours {
-    padding: 16px;
-    margin-top: 24px;
-  }
-
-  .working-hours h4 {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-
-  .working-hours p {
-    font-size: 13px;
-  }
 }
 
 @media (max-width: 480px) {
   .contact {
-    padding: 50px 12px;
-  }
-
-  .section-title {
-    font-size: 24px;
-  }
-
-  .section-subtitle {
-    font-size: 14px;
-  }
-
-  .contact-form-wrapper,
-  .contact-info-wrapper {
-    padding: 20px;
-  }
-
-  .form-group {
-    margin-bottom: 16px;
-  }
-
-  .form-label {
-    font-size: 14px;
-    margin-bottom: 6px;
-  }
-
-  .form-input,
-  .form-textarea {
-    padding: 10px 12px;
-    font-size: 14px;
-  }
-
-  .submit-btn {
-    padding: 12px;
-    font-size: 15px;
-  }
-
-  .info-title {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-
-  .info-item {
-    gap: 10px;
-    margin-bottom: 16px;
-    padding-bottom: 16px;
-  }
-
-  .info-icon {
-    font-size: 24px;
-  }
-
-  .info-label {
-    font-size: 14px;
-  }
-
-  .info-text {
-    font-size: 14px;
-  }
-
-  .info-subtext {
-    font-size: 12px;
-  }
-
-  .working-hours {
-    padding: 14px;
-    margin-top: 20px;
-  }
-
-  .working-hours h4 {
-    font-size: 15px;
-    margin-bottom: 8px;
-  }
-
-  .working-hours p {
-    font-size: 12px;
+    padding: 50px 10px;
   }
 }
 </style>

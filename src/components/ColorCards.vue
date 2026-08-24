@@ -94,7 +94,7 @@ const selectColor = (color) => {
 
 <style scoped>
 .color-cards {
-  padding: 100px 20px;
+  padding: clamp(60px, 10vw, 100px) 20px;
   background: white;
 }
 
@@ -105,18 +105,19 @@ const selectColor = (color) => {
 
 .section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: clamp(40px, 6vw, 60px);
 }
 
 .section-title {
-  font-size: 42px;
+  font-size: clamp(1.75rem, 4vw, 42px);
   font-weight: 700;
   color: #2c3e50;
   margin: 0 0 16px;
+  line-height: 1.2;
 }
 
 .section-subtitle {
-  font-size: 18px;
+  font-size: clamp(0.9rem, 2vw, 18px);
   color: #666;
   margin: 0;
 }
@@ -124,21 +125,22 @@ const selectColor = (color) => {
 .category-filter {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 40px;
+  gap: clamp(8px, 2vw, 12px);
+  margin-bottom: clamp(30px, 5vw, 40px);
   flex-wrap: wrap;
 }
 
 .filter-btn {
-  padding: 10px 24px;
+  padding: clamp(8px, 1.5vw, 10px) clamp(16px, 3vw, 24px);
   border: 2px solid #3498db;
   background: white;
   color: #3498db;
   border-radius: 25px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: clamp(0.8rem, 1.5vw, 16px);
   font-weight: 500;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .filter-btn:hover,
@@ -149,9 +151,9 @@ const selectColor = (color) => {
 
 .colors-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: clamp(12px, 2vw, 20px);
+  margin-bottom: clamp(30px, 5vw, 40px);
 }
 
 .color-card {
@@ -176,23 +178,23 @@ const selectColor = (color) => {
 
 .color-swatch {
   width: 100%;
-  height: 120px;
+  height: clamp(80px, 15vw, 120px);
 }
 
 .color-info {
-  padding: 12px;
+  padding: clamp(8px, 1.5vw, 12px);
   text-align: center;
 }
 
 .color-name {
-  font-size: 16px;
+  font-size: clamp(0.8rem, 1.5vw, 16px);
   font-weight: 600;
   color: #2c3e50;
   margin: 0 0 4px;
 }
 
 .color-hex {
-  font-size: 14px;
+  font-size: clamp(0.7rem, 1.2vw, 14px);
   color: #666;
   margin: 0 0 8px;
   font-family: monospace;
@@ -203,19 +205,19 @@ const selectColor = (color) => {
   padding: 4px 12px;
   background: #f0f0f0;
   border-radius: 12px;
-  font-size: 12px;
+  font-size: clamp(0.65rem, 1vw, 12px);
   color: #666;
 }
 
 .color-preview {
   background: #f8f9fa;
-  padding: 30px;
+  padding: clamp(20px, 4vw, 30px);
   border-radius: 16px;
-  margin-top: 40px;
+  margin-top: clamp(30px, 5vw, 40px);
 }
 
 .color-preview h3 {
-  font-size: 24px;
+  font-size: clamp(1.25rem, 3vw, 24px);
   color: #2c3e50;
   margin: 0 0 20px;
   text-align: center;
@@ -223,15 +225,15 @@ const selectColor = (color) => {
 
 .preview-content {
   display: flex;
-  gap: 30px;
+  gap: clamp(20px, 4vw, 30px);
   align-items: center;
   max-width: 600px;
   margin: 0 auto;
 }
 
 .preview-swatch {
-  width: 150px;
-  height: 150px;
+  width: clamp(100px, 20vw, 150px);
+  height: clamp(100px, 20vw, 150px);
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
@@ -242,7 +244,7 @@ const selectColor = (color) => {
 }
 
 .preview-info p {
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.5vw, 16px);
   color: #2c3e50;
   margin: 12px 0;
 }
@@ -253,84 +255,22 @@ const selectColor = (color) => {
 
 @media (max-width: 1024px) {
   .color-cards {
-    padding: 80px 20px;
-  }
-
-  .section-title {
-    font-size: 38px;
-  }
-
-  .section-subtitle {
-    font-size: 16px;
+    padding: 80px 16px;
   }
 
   .colors-grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
 
 @media (max-width: 768px) {
   .color-cards {
-    padding: 60px 16px;
-  }
-
-  .section-header {
-    margin-bottom: 40px;
-  }
-
-  .section-title {
-    font-size: 28px;
-  }
-
-  .section-subtitle {
-    font-size: 15px;
-  }
-
-  .category-filter {
-    gap: 8px;
-    margin-bottom: 30px;
-  }
-
-  .filter-btn {
-    padding: 8px 18px;
-    font-size: 14px;
+    padding: 60px 12px;
   }
 
   .colors-grid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 12px;
-  }
-
-  .color-swatch {
-    height: 90px;
-  }
-
-  .color-info {
-    padding: 10px;
-  }
-
-  .color-name {
-    font-size: 14px;
-  }
-
-  .color-hex {
-    font-size: 12px;
-  }
-
-  .color-category {
-    font-size: 11px;
-    padding: 3px 10px;
-  }
-
-  .color-preview {
-    padding: 20px;
-    margin-top: 30px;
-  }
-
-  .color-preview h3 {
-    font-size: 20px;
-    margin-bottom: 16px;
   }
 
   .preview-content {
@@ -342,33 +282,11 @@ const selectColor = (color) => {
     width: 100%;
     height: 150px;
   }
-
-  .preview-info p {
-    font-size: 14px;
-    margin: 10px 0;
-  }
 }
 
 @media (max-width: 480px) {
   .color-cards {
-    padding: 50px 12px;
-  }
-
-  .section-title {
-    font-size: 24px;
-  }
-
-  .section-subtitle {
-    font-size: 14px;
-  }
-
-  .category-filter {
-    gap: 6px;
-  }
-
-  .filter-btn {
-    padding: 6px 14px;
-    font-size: 13px;
+    padding: 50px 10px;
   }
 
   .colors-grid {
@@ -376,36 +294,9 @@ const selectColor = (color) => {
     gap: 10px;
   }
 
-  .color-swatch {
-    height: 80px;
-  }
-
-  .color-info {
-    padding: 8px;
-  }
-
-  .color-name {
+  .filter-btn {
+    padding: 6px 14px;
     font-size: 13px;
-  }
-
-  .color-hex {
-    font-size: 11px;
-  }
-
-  .color-category {
-    font-size: 10px;
-  }
-
-  .color-preview {
-    padding: 16px;
-  }
-
-  .color-preview h3 {
-    font-size: 18px;
-  }
-
-  .preview-swatch {
-    height: 120px;
   }
 }
 </style>

@@ -126,7 +126,7 @@ const toggleImage = () => {
 
 <style scoped>
 .cases {
-  padding: 100px 20px;
+  padding: clamp(60px, 10vw, 100px) 20px;
   background: #f8f9fa;
 }
 
@@ -137,26 +137,27 @@ const toggleImage = () => {
 
 .section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: clamp(40px, 6vw, 60px);
 }
 
 .section-title {
-  font-size: 42px;
+  font-size: clamp(1.75rem, 4vw, 42px);
   font-weight: 700;
   color: #2c3e50;
   margin: 0 0 16px;
+  line-height: 1.2;
 }
 
 .section-subtitle {
-  font-size: 18px;
+  font-size: clamp(0.9rem, 2vw, 18px);
   color: #666;
   margin: 0;
 }
 
 .cases-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: clamp(20px, 3vw, 30px);
 }
 
 .case-card {
@@ -175,7 +176,7 @@ const toggleImage = () => {
 
 .case-image {
   position: relative;
-  height: 250px;
+  height: clamp(200px, 30vw, 250px);
   overflow: hidden;
 }
 
@@ -198,30 +199,30 @@ const toggleImage = () => {
   color: white;
   padding: 6px 16px;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1.5vw, 14px);
   font-weight: 600;
 }
 
 .case-info {
-  padding: 24px;
+  padding: clamp(16px, 3vw, 24px);
 }
 
 .case-title {
-  font-size: 22px;
+  font-size: clamp(1.1rem, 2vw, 22px);
   font-weight: 600;
   color: #2c3e50;
   margin: 0 0 12px;
 }
 
 .case-description {
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.5vw, 16px);
   color: #666;
   margin: 0 0 12px;
   line-height: 1.6;
 }
 
 .case-location {
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1.2vw, 14px);
   color: #999;
   margin: 0;
 }
@@ -278,7 +279,7 @@ const toggleImage = () => {
 }
 
 .modal-header h2 {
-  font-size: 28px;
+  font-size: clamp(1.25rem, 3vw, 28px);
   color: #2c3e50;
   margin: 0;
 }
@@ -290,9 +291,10 @@ const toggleImage = () => {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.5vw, 16px);
   font-weight: 500;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .toggle-btn:hover {
@@ -301,7 +303,7 @@ const toggleImage = () => {
 
 .modal-image {
   position: relative;
-  height: 400px;
+  height: clamp(250px, 50vw, 400px);
 }
 
 .modal-image img {
@@ -318,7 +320,7 @@ const toggleImage = () => {
   color: white;
   padding: 8px 20px;
   border-radius: 20px;
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.5vw, 16px);
   font-weight: 600;
 }
 
@@ -327,7 +329,7 @@ const toggleImage = () => {
 }
 
 .modal-info p {
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.5vw, 16px);
   color: #666;
   line-height: 1.6;
   margin: 0 0 12px;
@@ -335,82 +337,32 @@ const toggleImage = () => {
 
 .modal-location {
   color: #999;
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1.2vw, 14px);
 }
 
 @media (max-width: 1024px) {
   .cases {
-    padding: 80px 20px;
-  }
-
-  .section-title {
-    font-size: 38px;
-  }
-
-  .section-subtitle {
-    font-size: 16px;
+    padding: 80px 16px;
   }
 
   .cases-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 24px;
-  }
-
-  .case-image {
-    height: 220px;
   }
 
   .modal-content {
     max-width: 700px;
   }
-
-  .modal-image {
-    height: 350px;
-  }
 }
 
 @media (max-width: 768px) {
   .cases {
-    padding: 60px 16px;
-  }
-
-  .section-header {
-    margin-bottom: 40px;
-  }
-
-  .section-title {
-    font-size: 28px;
-  }
-
-  .section-subtitle {
-    font-size: 15px;
+    padding: 60px 12px;
   }
 
   .cases-grid {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .case-image {
-    height: 200px;
-  }
-
-  .case-info {
-    padding: 20px;
-  }
-
-  .case-title {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  .case-description {
-    font-size: 15px;
-    margin-bottom: 10px;
-  }
-
-  .case-location {
-    font-size: 13px;
   }
 
   .case-modal {
@@ -430,79 +382,21 @@ const toggleImage = () => {
     padding: 20px;
   }
 
-  .modal-header h2 {
-    font-size: 22px;
-  }
-
   .toggle-btn {
-    padding: 8px 16px;
-    font-size: 14px;
-  }
-
-  .modal-image {
-    height: 250px;
-  }
-
-  .image-label {
-    padding: 6px 16px;
-    font-size: 14px;
-  }
-
-  .modal-info {
-    padding: 20px;
-  }
-
-  .modal-info p {
-    font-size: 15px;
-  }
-
-  .modal-location {
-    font-size: 13px;
+    width: 100%;
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
   .cases {
-    padding: 50px 12px;
+    padding: 50px 10px;
   }
 
-  .section-title {
-    font-size: 24px;
-  }
-
-  .section-subtitle {
-    font-size: 14px;
-  }
-
-  .case-image {
-    height: 180px;
-  }
-
-  .case-info {
-    padding: 16px;
-  }
-
-  .case-title {
-    font-size: 18px;
-  }
-
-  .case-description {
-    font-size: 14px;
-  }
-
-  .modal-header h2 {
-    font-size: 20px;
-  }
-
-  .modal-image {
-    height: 200px;
-  }
-
-  .modal-close {
-    width: 36px;
-    height: 36px;
+  .case-badge {
     top: 12px;
     right: 12px;
+    padding: 4px 12px;
   }
 }
 </style>

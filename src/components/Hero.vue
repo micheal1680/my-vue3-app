@@ -73,21 +73,24 @@ const stats = [
   color: white;
   padding: 40px 20px;
   max-width: 900px;
+  width: 100%;
 }
 
 .hero-title {
-  font-size: 56px;
+  font-size: clamp(2rem, 5vw, 56px);
   font-weight: 800;
   margin: 0 0 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   animation: fadeInUp 0.8s ease;
+  line-height: 1.2;
 }
 
 .hero-subtitle {
-  font-size: 24px;
+  font-size: clamp(1rem, 2.5vw, 24px);
   margin: 0 0 40px;
   opacity: 0.95;
   animation: fadeInUp 0.8s ease 0.2s both;
+  line-height: 1.5;
 }
 
 .hero-buttons {
@@ -96,16 +99,18 @@ const stats = [
   justify-content: center;
   margin-bottom: 60px;
   animation: fadeInUp 0.8s ease 0.4s both;
+  flex-wrap: wrap;
 }
 
 .btn {
   padding: 16px 32px;
-  font-size: 18px;
+  font-size: clamp(0.9rem, 2vw, 18px);
   font-weight: 600;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-width: 140px;
 }
 
 .btn-primary {
@@ -132,22 +137,26 @@ const stats = [
 .hero-stats {
   display: flex;
   justify-content: center;
-  gap: 60px;
+  gap: clamp(20px, 5vw, 60px);
   animation: fadeInUp 0.8s ease 0.6s both;
+  flex-wrap: wrap;
 }
 
 .stat-item {
   text-align: center;
+  flex: 1;
+  min-width: 100px;
+  max-width: 200px;
 }
 
 .stat-value {
-  font-size: 48px;
+  font-size: clamp(2rem, 4vw, 48px);
   font-weight: 800;
   margin-bottom: 8px;
 }
 
 .stat-label {
-  font-size: 16px;
+  font-size: clamp(0.8rem, 1.5vw, 16px);
   opacity: 0.9;
 }
 
@@ -163,72 +172,18 @@ const stats = [
 }
 
 @media (max-width: 1024px) {
-  .hero-title {
-    font-size: 48px;
+  .hero {
+    padding-top: 60px;
   }
-
-  .hero-subtitle {
-    font-size: 22px;
-  }
-
-  .stat-value {
-    font-size: 42px;
+  
+  .hero-content {
+    padding: 30px 16px;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding: 100px 0 60px;
-  }
-
-  .hero-content {
-    padding: 30px 16px;
-  }
-
-  .hero-title {
-    font-size: 32px;
-    margin-bottom: 16px;
-  }
-
-  .hero-subtitle {
-    font-size: 16px;
-    margin-bottom: 30px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 40px;
-  }
-
-  .btn {
-    padding: 14px 28px;
-    font-size: 16px;
-    width: 100%;
-  }
-
-  .hero-stats {
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .stat-item {
-    flex: 0 0 calc(50% - 10px);
-  }
-
-  .stat-value {
-    font-size: 32px;
-    margin-bottom: 6px;
-  }
-
-  .stat-label {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
     padding: 90px 0 50px;
   }
 
@@ -236,29 +191,70 @@ const stats = [
     padding: 20px 12px;
   }
 
-  .hero-title {
-    font-size: 28px;
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 40px;
+    align-items: center;
   }
 
-  .hero-subtitle {
-    font-size: 15px;
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .hero-stats {
+    gap: 16px;
+  }
+
+  .stat-item {
+    flex: 0 0 calc(50% - 8px);
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 80px 0 40px;
+  }
+
+  .hero-content {
+    padding: 16px 10px;
+  }
+
+  .hero-buttons {
+    margin-bottom: 30px;
   }
 
   .btn {
     padding: 12px 24px;
-    font-size: 15px;
+    min-width: 120px;
   }
 
   .stat-item {
-    flex: 0 0 calc(50% - 10px);
+    flex: 0 0 calc(50% - 8px);
+    min-width: 100px;
   }
+}
 
-  .stat-value {
-    font-size: 28px;
+@media (max-width: 360px) {
+  .hero {
+    padding: 70px 0 30px;
   }
+  
+  .stat-item {
+    flex: 0 0 100%;
+  }
+}
 
-  .stat-label {
-    font-size: 13px;
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero {
+    min-height: auto;
+    padding: 60px 0 30px;
+  }
+  
+  .hero-stats {
+    display: none;
   }
 }
 </style>

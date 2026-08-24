@@ -81,12 +81,17 @@ const toggleMenu = () => {
   font-size: 24px;
   font-weight: 700;
   color: #2c3e50;
+  flex-shrink: 0;
 }
 
 .logo-icon {
   width: 32px;
   height: 32px;
   color: #3498db;
+}
+
+.logo-text {
+  white-space: nowrap;
 }
 
 .navbar-menu {
@@ -105,6 +110,7 @@ const toggleMenu = () => {
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -118,6 +124,7 @@ const toggleMenu = () => {
   gap: 5px;
   cursor: pointer;
   padding: 5px;
+  z-index: 1001;
 }
 
 .toggle-bar {
@@ -140,35 +147,111 @@ const toggleMenu = () => {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
+@media (max-width: 1024px) {
+  .navbar-container {
+    padding: 0 16px;
+  }
+  
+  .nav-link {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .navbar-menu {
+    gap: 4px;
+  }
+}
+
 @media (max-width: 768px) {
+  .navbar-container {
+    height: 60px;
+    padding: 0 12px;
+  }
+  
+  .navbar-logo {
+    font-size: 20px;
+  }
+  
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
   .navbar-toggle {
     display: flex;
   }
 
   .navbar-menu {
-    position: absolute;
-    top: 70px;
+    position: fixed;
+    top: 60px;
     left: 0;
     right: 0;
-    background: white;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
     flex-direction: column;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transform: translateY(-100%);
+    transform: translateX(100%);
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
+    overflow-y: auto;
+    gap: 0;
   }
 
   .navbar-menu.open {
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
     pointer-events: all;
   }
 
   .nav-link {
     display: block;
-    padding: 12px 16px;
+    padding: 16px;
+    font-size: 16px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .nav-link:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    height: 56px;
+    padding: 0 10px;
+  }
+  
+  .navbar-logo {
+    font-size: 18px;
+    gap: 8px;
+  }
+  
+  .logo-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .navbar-menu {
+    top: 56px;
+  }
+  
+  .nav-link {
+    padding: 14px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar-logo {
+    font-size: 16px;
+  }
+  
+  .logo-icon {
+    width: 22px;
+    height: 22px;
   }
 }
 </style>

@@ -89,7 +89,7 @@ const renderStars = (rating) => {
 
 <style scoped>
 .testimonials {
-  padding: 100px 20px;
+  padding: clamp(60px, 10vw, 100px) 20px;
   background: white;
 }
 
@@ -100,31 +100,32 @@ const renderStars = (rating) => {
 
 .section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: clamp(40px, 6vw, 60px);
 }
 
 .section-title {
-  font-size: 42px;
+  font-size: clamp(1.75rem, 4vw, 42px);
   font-weight: 700;
   color: #2c3e50;
   margin: 0 0 16px;
+  line-height: 1.2;
 }
 
 .section-subtitle {
-  font-size: 18px;
+  font-size: clamp(0.9rem, 2vw, 18px);
   color: #666;
   margin: 0;
 }
 
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: clamp(20px, 3vw, 30px);
 }
 
 .testimonial-card {
   background: #f8f9fa;
-  padding: 30px;
+  padding: clamp(20px, 4vw, 30px);
   border-radius: 16px;
   transition: all 0.3s ease;
 }
@@ -137,19 +138,20 @@ const renderStars = (rating) => {
 .testimonial-header {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: clamp(12px, 2vw, 16px);
   margin-bottom: 16px;
 }
 
 .avatar {
-  width: 60px;
-  height: 60px;
+  width: clamp(48px, 8vw, 60px);
+  height: clamp(48px, 8vw, 60px);
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
+  font-size: clamp(24px, 4vw, 32px);
+  flex-shrink: 0;
 }
 
 .user-info {
@@ -157,158 +159,61 @@ const renderStars = (rating) => {
 }
 
 .user-name {
-  font-size: 18px;
+  font-size: clamp(0.9rem, 1.5vw, 18px);
   font-weight: 600;
   color: #2c3e50;
   margin: 0 0 4px;
 }
 
 .user-project {
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1.2vw, 14px);
   color: #666;
   margin: 0;
 }
 
 .rating {
-  font-size: 20px;
+  font-size: clamp(1rem, 2vw, 20px);
   margin-bottom: 16px;
 }
 
 .testimonial-text {
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.5vw, 16px);
   color: #2c3e50;
   line-height: 1.6;
   margin: 0 0 12px;
 }
 
 .testimonial-date {
-  font-size: 14px;
+  font-size: clamp(0.75rem, 1.2vw, 14px);
   color: #999;
   margin: 0;
 }
 
 @media (max-width: 1024px) {
   .testimonials {
-    padding: 80px 20px;
-  }
-
-  .section-title {
-    font-size: 38px;
-  }
-
-  .section-subtitle {
-    font-size: 16px;
+    padding: 80px 16px;
   }
 
   .testimonials-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 24px;
   }
 }
 
 @media (max-width: 768px) {
   .testimonials {
-    padding: 60px 16px;
-  }
-
-  .section-header {
-    margin-bottom: 40px;
-  }
-
-  .section-title {
-    font-size: 28px;
-  }
-
-  .section-subtitle {
-    font-size: 15px;
+    padding: 60px 12px;
   }
 
   .testimonials-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-
-  .testimonial-card {
-    padding: 24px;
-  }
-
-  .avatar {
-    width: 50px;
-    height: 50px;
-    font-size: 28px;
-  }
-
-  .user-name {
-    font-size: 16px;
-  }
-
-  .user-project {
-    font-size: 13px;
-  }
-
-  .rating {
-    font-size: 18px;
-    margin-bottom: 12px;
-  }
-
-  .testimonial-text {
-    font-size: 15px;
-    margin-bottom: 10px;
-  }
-
-  .testimonial-date {
-    font-size: 13px;
-  }
 }
 
 @media (max-width: 480px) {
   .testimonials {
-    padding: 50px 12px;
-  }
-
-  .section-title {
-    font-size: 24px;
-  }
-
-  .section-subtitle {
-    font-size: 14px;
-  }
-
-  .testimonial-card {
-    padding: 20px;
-  }
-
-  .testimonial-header {
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-
-  .avatar {
-    width: 44px;
-    height: 44px;
-    font-size: 24px;
-  }
-
-  .user-name {
-    font-size: 15px;
-  }
-
-  .user-project {
-    font-size: 12px;
-  }
-
-  .rating {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-
-  .testimonial-text {
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
-
-  .testimonial-date {
-    font-size: 12px;
+    padding: 50px 10px;
   }
 }
 </style>

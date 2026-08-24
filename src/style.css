@@ -11,6 +11,8 @@
   --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
   --radius: 12px;
   --transition: all 0.3s ease;
+  --container-max: 1200px;
+  --container-padding: 20px;
 }
 
 * {
@@ -23,6 +25,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -34,6 +37,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   width: 100%;
+  max-width: 100vw;
 }
 
 a {
@@ -62,20 +66,38 @@ input, textarea, select {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--container-padding);
+}
+
+@media (max-width: 1920px) {
+  html {
+    font-size: 18px;
+  }
+  
+  .container {
+    max-width: 1400px;
+  }
 }
 
 @media (max-width: 1440px) {
   html {
     font-size: 16px;
   }
+  
+  .container {
+    max-width: 1200px;
+  }
 }
 
 @media (max-width: 1024px) {
   html {
     font-size: 15px;
+  }
+  
+  :root {
+    --container-padding: 16px;
   }
   
   .container {
@@ -88,12 +110,17 @@ input, textarea, select {
     font-size: 14px;
   }
   
+  :root {
+    --container-padding: 12px;
+  }
+  
   .container {
     padding: 0 12px;
   }
   
   body {
     -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
@@ -102,17 +129,23 @@ input, textarea, select {
     font-size: 13px;
   }
   
+  :root {
+    --container-padding: 10px;
+  }
+  
   .container {
     padding: 0 10px;
   }
 }
 
-@media (min-width: 1920px) {
+@media (max-width: 360px) {
   html {
-    font-size: 18px;
+    font-size: 12px;
   }
-  
-  .container {
-    max-width: 1400px;
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  html {
+    font-size: 12px;
   }
 }
