@@ -335,22 +335,196 @@ const contactInfo = [
   line-height: 1.6;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .contact {
-    padding: 60px 20px;
+    padding: 80px 20px;
   }
 
   .section-title {
-    font-size: 32px;
+    font-size: 38px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+  }
+
+  .contact-content {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 30px;
+  }
+
+  .contact-form-wrapper,
+  .contact-info-wrapper {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 60px 16px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .section-subtitle {
+    font-size: 15px;
   }
 
   .contact-content {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .contact-form-wrapper,
   .contact-info-wrapper {
     padding: 24px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-label {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  .form-input,
+  .form-textarea {
+    padding: 10px 14px;
+    font-size: 15px;
+  }
+
+  .submit-btn {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .info-title {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  .info-item {
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+
+  .info-icon {
+    font-size: 28px;
+  }
+
+  .info-label {
+    font-size: 15px;
+  }
+
+  .info-text {
+    font-size: 15px;
+  }
+
+  .info-subtext {
+    font-size: 13px;
+  }
+
+  .working-hours {
+    padding: 16px;
+    margin-top: 24px;
+  }
+
+  .working-hours h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .working-hours p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 50px 12px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+  }
+
+  .contact-form-wrapper,
+  .contact-info-wrapper {
+    padding: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-label {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .form-input,
+  .form-textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .submit-btn {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .info-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .info-item {
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+  }
+
+  .info-icon {
+    font-size: 24px;
+  }
+
+  .info-label {
+    font-size: 14px;
+  }
+
+  .info-text {
+    font-size: 14px;
+  }
+
+  .info-subtext {
+    font-size: 12px;
+  }
+
+  .working-hours {
+    padding: 14px;
+    margin-top: 20px;
+  }
+
+  .working-hours h4 {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .working-hours p {
+    font-size: 12px;
   }
 }
 </style>

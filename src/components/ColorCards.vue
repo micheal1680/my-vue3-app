@@ -251,31 +251,161 @@ const selectColor = (color) => {
   color: #3498db;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .color-cards {
-    padding: 60px 20px;
+    padding: 80px 20px;
   }
 
   .section-title {
-    font-size: 32px;
+    font-size: 38px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
   }
 
   .colors-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .color-cards {
+    padding: 60px 16px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .section-subtitle {
+    font-size: 15px;
+  }
+
+  .category-filter {
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+
+  .filter-btn {
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+
+  .colors-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
   }
 
   .color-swatch {
-    height: 100px;
+    height: 90px;
+  }
+
+  .color-info {
+    padding: 10px;
+  }
+
+  .color-name {
+    font-size: 14px;
+  }
+
+  .color-hex {
+    font-size: 12px;
+  }
+
+  .color-category {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+
+  .color-preview {
+    padding: 20px;
+    margin-top: 30px;
+  }
+
+  .color-preview h3 {
+    font-size: 20px;
+    margin-bottom: 16px;
   }
 
   .preview-content {
     flex-direction: column;
+    gap: 20px;
   }
 
   .preview-swatch {
     width: 100%;
-    height: 200px;
+    height: 150px;
+  }
+
+  .preview-info p {
+    font-size: 14px;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .color-cards {
+    padding: 50px 12px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+  }
+
+  .category-filter {
+    gap: 6px;
+  }
+
+  .filter-btn {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+
+  .colors-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+  }
+
+  .color-swatch {
+    height: 80px;
+  }
+
+  .color-info {
+    padding: 8px;
+  }
+
+  .color-name {
+    font-size: 13px;
+  }
+
+  .color-hex {
+    font-size: 11px;
+  }
+
+  .color-category {
+    font-size: 10px;
+  }
+
+  .color-preview {
+    padding: 16px;
+  }
+
+  .color-preview h3 {
+    font-size: 18px;
+  }
+
+  .preview-swatch {
+    height: 120px;
   }
 }
 </style>

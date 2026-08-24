@@ -338,27 +338,171 @@ const toggleImage = () => {
   font-size: 14px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .cases {
-    padding: 60px 20px;
+    padding: 80px 20px;
   }
 
   .section-title {
-    font-size: 32px;
+    font-size: 38px;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+  }
+
+  .cases-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .case-image {
+    height: 220px;
+  }
+
+  .modal-content {
+    max-width: 700px;
+  }
+
+  .modal-image {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cases {
+    padding: 60px 16px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .section-subtitle {
+    font-size: 15px;
   }
 
   .cases-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .case-image {
+    height: 200px;
+  }
+
+  .case-info {
+    padding: 20px;
+  }
+
+  .case-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .case-description {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .case-location {
+    font-size: 13px;
+  }
+
+  .case-modal {
+    padding: 10px;
+  }
+
+  .modal-content {
+    max-width: 100%;
+    max-height: 95vh;
+    border-radius: 12px;
   }
 
   .modal-header {
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     align-items: flex-start;
+    padding: 20px;
+  }
+
+  .modal-header h2 {
+    font-size: 22px;
+  }
+
+  .toggle-btn {
+    padding: 8px 16px;
+    font-size: 14px;
   }
 
   .modal-image {
     height: 250px;
+  }
+
+  .image-label {
+    padding: 6px 16px;
+    font-size: 14px;
+  }
+
+  .modal-info {
+    padding: 20px;
+  }
+
+  .modal-info p {
+    font-size: 15px;
+  }
+
+  .modal-location {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cases {
+    padding: 50px 12px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+  }
+
+  .case-image {
+    height: 180px;
+  }
+
+  .case-info {
+    padding: 16px;
+  }
+
+  .case-title {
+    font-size: 18px;
+  }
+
+  .case-description {
+    font-size: 14px;
+  }
+
+  .modal-header h2 {
+    font-size: 20px;
+  }
+
+  .modal-image {
+    height: 200px;
+  }
+
+  .modal-close {
+    width: 36px;
+    height: 36px;
+    top: 12px;
+    right: 12px;
   }
 }
 </style>
