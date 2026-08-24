@@ -4,5 +4,4 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template> 
   <HelloWorld />
-  及时更新项目代码   
 </template>
