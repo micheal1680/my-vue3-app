@@ -225,9 +225,10 @@ const contactInfo = [
   padding: clamp(10px, 2vw, 12px) clamp(12px, 2vw, 16px);
   border: 2px solid #e0e0e0;
   border-radius: 8px;
-  font-size: clamp(0.875rem, 1.5vw, 16px);
+  font-size: 16px;
   transition: all 0.3s ease;
   box-sizing: border-box;
+  min-height: 44px;
 }
 
 .form-input:focus,
@@ -254,6 +255,7 @@ const contactInfo = [
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-height: 48px;
 }
 
 .submit-btn:hover {

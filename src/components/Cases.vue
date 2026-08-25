@@ -235,7 +235,8 @@ const toggleImage = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: clamp(10px, 3vw, 20px);
+  overflow-y: auto;
 }
 
 .modal-content {
@@ -246,6 +247,7 @@ const toggleImage = () => {
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
+  margin: auto;
 }
 
 .modal-close {
@@ -264,6 +266,8 @@ const toggleImage = () => {
   justify-content: center;
   z-index: 10;
   transition: all 0.3s ease;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .modal-close:hover {
@@ -271,39 +275,45 @@ const toggleImage = () => {
 }
 
 .modal-header {
-  padding: 24px;
+  padding: clamp(16px, 3vw, 24px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #eee;
+  gap: 12px;
 }
 
 .modal-header h2 {
-  font-size: clamp(1.25rem, 3vw, 28px);
+  font-size: clamp(1.125rem, 3vw, 1.75rem);
   color: #2c3e50;
   margin: 0;
 }
 
 .toggle-btn {
-  padding: 10px 20px;
+  padding: clamp(8px, 1.5vw, 10px) clamp(16px, 3vw, 20px);
   background: #3498db;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: clamp(0.875rem, 1.5vw, 16px);
+  font-size: clamp(0.8125rem, 1.5vw, 1rem);
   font-weight: 500;
   transition: all 0.3s ease;
   white-space: nowrap;
+  min-height: 44px;
 }
 
 .toggle-btn:hover {
   background: #2980b9;
 }
 
+.toggle-btn:active {
+  transform: scale(0.95);
+}
+
 .modal-image {
   position: relative;
-  height: clamp(250px, 50vw, 400px);
+  height: clamp(200px, 50vw, 400px);
 }
 
 .modal-image img {
@@ -320,16 +330,16 @@ const toggleImage = () => {
   color: white;
   padding: 8px 20px;
   border-radius: 20px;
-  font-size: clamp(0.875rem, 1.5vw, 16px);
+  font-size: clamp(0.8125rem, 1.5vw, 1rem);
   font-weight: 600;
 }
 
 .modal-info {
-  padding: 24px;
+  padding: clamp(16px, 3vw, 24px);
 }
 
 .modal-info p {
-  font-size: clamp(0.875rem, 1.5vw, 16px);
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
   color: #666;
   line-height: 1.6;
   margin: 0 0 12px;
@@ -337,7 +347,7 @@ const toggleImage = () => {
 
 .modal-location {
   color: #999;
-  font-size: clamp(0.75rem, 1.2vw, 14px);
+  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
 }
 
 @media (max-width: 1024px) {
@@ -386,6 +396,11 @@ const toggleImage = () => {
     width: 100%;
     text-align: center;
   }
+  
+  .modal-close {
+    top: 12px;
+    right: 12px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -397,6 +412,21 @@ const toggleImage = () => {
     top: 12px;
     right: 12px;
     padding: 4px 12px;
+    font-size: 0.75rem;
+  }
+  
+  .modal-image {
+    height: clamp(180px, 60vw, 300px);
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .case-card {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .toggle-btn, .modal-close {
+    min-height: 44px;
   }
 }
 </style>

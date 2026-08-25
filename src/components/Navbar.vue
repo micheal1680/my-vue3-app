@@ -59,8 +59,10 @@ const toggleMenu = () => {
   right: 0;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  height: var(--navbar-height);
 }
 
 .navbar-container {
@@ -70,7 +72,7 @@ const toggleMenu = () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 100%;
 }
 
 .navbar-logo {
@@ -78,16 +80,19 @@ const toggleMenu = () => {
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  font-size: 24px;
+  font-size: clamp(18px, 2.5vw, 24px);
   font-weight: 700;
   color: #2c3e50;
   flex-shrink: 0;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .logo-icon {
-  width: 32px;
-  height: 32px;
+  width: clamp(24px, 3vw, 32px);
+  height: clamp(24px, 3vw, 32px);
   color: #3498db;
+  flex-shrink: 0;
 }
 
 .logo-text {
@@ -99,11 +104,11 @@ const toggleMenu = () => {
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 8px;
+  gap: clamp(4px, 1vw, 8px);
 }
 
 .nav-link {
-  padding: 10px 16px;
+  padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 16px);
   color: #2c3e50;
   text-decoration: none;
   border-radius: 6px;
@@ -111,6 +116,7 @@ const toggleMenu = () => {
   transition: all 0.3s ease;
   font-weight: 500;
   white-space: nowrap;
+  font-size: clamp(13px, 1.5vw, 15px);
 }
 
 .nav-link:hover {
@@ -118,17 +124,31 @@ const toggleMenu = () => {
   color: white;
 }
 
+.nav-link:active {
+  transform: scale(0.95);
+}
+
 .navbar-toggle {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   cursor: pointer;
-  padding: 5px;
+  padding: 8px;
   z-index: 1001;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.navbar-toggle:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .toggle-bar {
-  width: 25px;
+  width: 24px;
   height: 3px;
   background: #2c3e50;
   border-radius: 2px;
@@ -152,51 +172,24 @@ const toggleMenu = () => {
     padding: 0 16px;
   }
   
-  .nav-link {
-    padding: 8px 10px;
-    font-size: 13px;
-  }
-  
   .navbar-menu {
-    gap: 2px;
-  }
-  
-  .navbar-logo {
-    font-size: 22px;
-  }
-  
-  .logo-icon {
-    width: 28px;
-    height: 28px;
+    gap: 4px;
   }
 }
 
 @media (max-width: 900px) {
-  .navbar-container {
-    height: 60px;
-    padding: 0 12px;
-  }
-  
-  .navbar-logo {
-    font-size: 20px;
-  }
-  
-  .logo-icon {
-    width: 26px;
-    height: 26px;
-  }
-  
   .navbar-toggle {
     display: flex;
   }
 
   .navbar-menu {
     position: fixed;
-    top: 60px;
+    top: var(--navbar-height);
     left: 0;
     right: 0;
     bottom: 0;
     background: rgba(255, 255, 255, 0.98);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     flex-direction: column;
     padding: 20px;
@@ -220,6 +213,9 @@ const toggleMenu = () => {
     padding: 16px;
     font-size: 16px;
     border-bottom: 1px solid #f0f0f0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
   
   .nav-link:last-child {
@@ -229,48 +225,13 @@ const toggleMenu = () => {
 
 @media (max-width: 768px) {
   .navbar-container {
-    height: 56px;
-    padding: 0 10px;
-  }
-  
-  .navbar-logo {
-    font-size: 18px;
-    gap: 8px;
-  }
-  
-  .logo-icon {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .navbar-menu {
-    top: 56px;
-  }
-  
-  .nav-link {
-    padding: 14px;
-    font-size: 15px;
+    padding: 0 12px;
   }
 }
 
 @media (max-width: 480px) {
   .navbar-container {
-    height: 56px;
     padding: 0 10px;
-  }
-  
-  .navbar-logo {
-    font-size: 18px;
-    gap: 8px;
-  }
-  
-  .logo-icon {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .navbar-menu {
-    top: 56px;
   }
   
   .nav-link {
@@ -283,10 +244,11 @@ const toggleMenu = () => {
   .navbar-logo {
     font-size: 16px;
   }
-  
-  .logo-icon {
-    width: 22px;
-    height: 22px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .nav-link {
+    min-height: 44px;
   }
 }
 </style>

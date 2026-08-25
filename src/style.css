@@ -13,6 +13,7 @@
   --transition: all 0.3s ease;
   --container-max: 1200px;
   --container-padding: 20px;
+  --navbar-height: 70px;
 }
 
 * {
@@ -26,6 +27,7 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -38,18 +40,21 @@ body {
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
+  position: relative;
 }
 
 a {
   text-decoration: none;
   color: inherit;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 button {
   font-family: inherit;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 img {
@@ -71,51 +76,46 @@ input, textarea, select {
   padding: 0 var(--container-padding);
 }
 
-@media (max-width: 1920px) {
-  html {
-    font-size: 18px;
+@media (min-width: 1920px) {
+  :root {
+    --container-max: 1400px;
   }
   
-  .container {
-    max-width: 1400px;
+  html {
+    font-size: 18px;
   }
 }
 
 @media (max-width: 1440px) {
-  html {
-    font-size: 16px;
+  :root {
+    --container-max: 1200px;
   }
   
-  .container {
-    max-width: 1200px;
+  html {
+    font-size: 16px;
   }
 }
 
 @media (max-width: 1024px) {
+  :root {
+    --container-max: 100%;
+    --container-padding: 16px;
+    --navbar-height: 60px;
+  }
+  
   html {
     font-size: 15px;
-  }
-  
-  :root {
-    --container-padding: 16px;
-  }
-  
-  .container {
-    padding: 0 16px;
   }
 }
 
 @media (max-width: 768px) {
-  html {
-    font-size: 14px;
-  }
-  
   :root {
     --container-padding: 12px;
+    --navbar-height: 56px;
   }
   
-  .container {
-    padding: 0 12px;
+  html {
+    font-size: 14px;
   }
   
   body {
@@ -125,16 +125,12 @@ input, textarea, select {
 }
 
 @media (max-width: 480px) {
-  html {
-    font-size: 13px;
-  }
-  
   :root {
     --container-padding: 10px;
   }
   
-  .container {
-    padding: 0 10px;
+  html {
+    font-size: 13px;
   }
 }
 
@@ -145,7 +141,46 @@ input, textarea, select {
 }
 
 @media (orientation: landscape) and (max-height: 500px) {
+  :root {
+    --navbar-height: 50px;
+  }
+  
   html {
     font-size: 12px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  button, a, .nav-link, .filter-btn {
+    min-height: 44px;
+  }
+  
+  .service-card, .case-card, .testimonial-card, .color-card {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@media (-webkit-device-pixel-ratio: 2), (resolution: 192dpi) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .navbar, .footer, button {
+    display: none;
+  }
+  
+  body {
+    font-size: 12pt;
   }
 }
