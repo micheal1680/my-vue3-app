@@ -8,8 +8,7 @@ const quickLinks = [
   { label: '服务项目', id: 'services' },
   { label: '色卡展示', id: 'colors' },
   { label: '案例展示', id: 'cases' },
-  { label: '客户评价', id: 'testimonials' },
-  { label: '联系我们', id: 'contact' }
+  { label: '联系方式', id: 'contact' }
 ]
 
 const scrollToSection = (id) => {

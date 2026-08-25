@@ -7,8 +7,7 @@ const navItems = [
   { id: 'services', label: '服务项目' },
   { id: 'colors', label: '色卡展示' },
   { id: 'cases', label: '案例展示' },
-  { id: 'testimonials', label: '客户评价' },
-  { id: 'contact', label: '联系我们' }
+  { id: 'contact', label: '联系方式' }
 ]
 
 const scrollToSection = (id) => {
@@ -191,6 +190,7 @@ const toggleMenu = () => {
     background: rgba(255, 255, 255, 0.98);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    display: flex;
     flex-direction: column;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -200,6 +200,13 @@ const toggleMenu = () => {
     transition: all 0.3s ease;
     overflow-y: auto;
     gap: 0;
+    list-style: none;
+    margin: 0;
+    z-index: 999;
+  }
+
+  .navbar-menu li {
+    width: 100%;
   }
 
   .navbar-menu.open {
@@ -209,13 +216,17 @@ const toggleMenu = () => {
   }
 
   .nav-link {
-    display: block;
+    display: flex;
+    align-items: center;
     padding: 16px;
     font-size: 16px;
     border-bottom: 1px solid #f0f0f0;
     min-height: 44px;
-    display: flex;
-    align-items: center;
+    width: 100%;
+    color: #2c3e50;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
   }
   
   .nav-link:last-child {

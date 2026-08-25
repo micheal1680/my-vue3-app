@@ -1,13 +1,4 @@
 <script setup>
-import { ref } from 'vue'
-
-const scrollToContact = () => {
-  const element = document.getElementById('contact')
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' })
-  }
-}
-
 const scrollToCases = () => {
   const element = document.getElementById('cases')
   if (element) {
@@ -30,8 +21,7 @@ const stats = [
       <h1 class="hero-title">旧墙翻新 让家焕然一新</h1>
       <p class="hero-subtitle">专业墙面翻新服务，为您的家注入新的生命力</p>
       <div class="hero-buttons">
-        <button class="btn btn-primary" @click="scrollToContact">免费预约</button>
-        <button class="btn btn-secondary" @click="scrollToCases">查看案例</button>
+        <button class="btn btn-primary" @click="scrollToCases">查看案例</button>
       </div>
       <div class="hero-stats">
         <div v-for="stat in stats" :key="stat.label" class="stat-item">
