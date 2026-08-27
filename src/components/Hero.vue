@@ -61,7 +61,7 @@ const stats = [
 .hero-content {
   position: relative;
   z-index: 1;
-  text-align: center;
+  text-align: center;  
   color: white;
   padding: clamp(30px, 5vw, 60px) clamp(16px, 3vw, 24px);
   max-width: 900px;
