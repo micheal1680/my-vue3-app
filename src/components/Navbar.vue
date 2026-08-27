@@ -186,23 +186,19 @@ const toggleMenu = () => {
     top: var(--navbar-height);
     left: 0;
     right: 0;
-    bottom: 0;
+    max-height: calc(100vh - var(--navbar-height));
     background: rgba(255, 255, 255, 0.98);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    display: flex;
     flex-direction: column;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transform: translateX(100%);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
     overflow-y: auto;
     gap: 0;
     list-style: none;
     margin: 0;
-    z-index: 999;
+    z-index: 1001;
+    display: none;
   }
 
   .navbar-menu li {
@@ -210,9 +206,7 @@ const toggleMenu = () => {
   }
 
   .navbar-menu.open {
-    transform: translateX(0);
-    opacity: 1;
-    pointer-events: all;
+    display: flex !important;
   }
 
   .nav-link {

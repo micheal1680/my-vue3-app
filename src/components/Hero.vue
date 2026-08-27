@@ -36,12 +36,13 @@ const stats = [
 <style scoped>
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding-top: var(--navbar-height);
+  padding: clamp(30px, 6vw, 60px) clamp(16px, 3vw, 24px);
+  padding-top: calc(var(--navbar-height) + clamp(20px, 4vw, 40px));
   overflow: hidden;
 }
 
