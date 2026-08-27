@@ -5,8 +5,8 @@ const scrollToTop = () => {
 
 const quickLinks = [
   { label: '首页', id: 'home' },
-  { label: '服务项目', id: 'services' },
-  { label: '色卡展示', id: 'colors' },
+  { label: '展示分类', id: 'services' },
+  { label: '效果画廊', id: 'gallery' },
   { label: '案例展示', id: 'cases' },
   { label: '联系方式', id: 'contact' }
 ]
@@ -48,11 +48,10 @@ const scrollToSection = (id) => {
         <div class="footer-section">
           <h4 class="footer-title">服务项目</h4>
           <ul class="footer-links">
-            <li><a class="footer-link">墙面刷漆</a></li>
-            <li><a class="footer-link">墙面修补</a></li>
-            <li><a class="footer-link">旧墙翻新</a></li>
-            <li><a class="footer-link">艺术涂料</a></li>
-            <li><a class="footer-link">防水处理</a></li>
+            <li><a class="footer-link">厨卫改造</a></li>
+            <li><a class="footer-link">柜子定制</a></li>
+            <li><a class="footer-link">墙衣施工</a></li>
+            <li><a class="footer-link">橱柜吊柜定制</a></li>
           </ul>
         </div>
 

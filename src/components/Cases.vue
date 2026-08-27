@@ -1,59 +1,67 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const cases = [
   {
     id: 1,
-    title: '客厅翻新',
+    category: 'kitchen-bath',
+    title: '厨卫改造 - 现代简约厨房',
     before: 'https://picsum.photos/600/400?random=10',
     after: 'https://picsum.photos/600/400?random=20',
-    description: '老旧墙面重新粉刷，采用温馨的米色调',
+    description: '老旧厨房整体改造，防水处理+瓷砖翻新+集成吊顶',
     location: '朝阳区'
   },
   {
     id: 2,
-    title: '卧室改造',
+    category: 'cabinet-custom',
+    title: '柜子定制 - 全屋衣柜',
     before: 'https://picsum.photos/600/400?random=11',
     after: 'https://picsum.photos/600/400?random=21',
-    description: '卧室墙面升级为淡雅的浅蓝色',
+    description: 'E0级板材定制，个性化设计，满足收纳需求',
     location: '海淀区'
   },
   {
     id: 3,
-    title: '厨房翻新',
+    category: 'wall-coat',
+    title: '墙衣施工 - 客厅墙面',
     before: 'https://picsum.photos/600/400?random=12',
     after: 'https://picsum.photos/600/400?random=22',
-    description: '厨房墙面防水处理+瓷砖翻新',
+    description: '环保墙衣材料施工，质感细腻，色彩丰富',
     location: '西城区'
   },
   {
     id: 4,
-    title: '办公室改造',
+    category: 'cabinet-hanging',
+    title: '橱柜吊柜 - L型厨房',
     before: 'https://picsum.photos/600/400?random=13',
     after: 'https://picsum.photos/600/400?random=23',
-    description: '办公空间整体墙面焕新',
+    description: '厨房橱柜+吊柜定制，合理利用空间',
     location: '东城区'
   },
   {
     id: 5,
-    title: '儿童房',
+    category: 'kitchen-bath',
+    title: '厨卫改造 - 卫生间翻新',
     before: 'https://picsum.photos/600/400?random=14',
     after: 'https://picsum.photos/600/400?random=24',
-    description: '采用环保涂料，打造安全温馨的儿童房',
+    description: '卫生间干湿分离，防水+瓷砖+浴室柜',
     location: '丰台区'
   },
   {
     id: 6,
-    title: '别墅外墙',
+    category: 'cabinet-custom',
+    title: '柜子定制 - 书房书柜',
     before: 'https://picsum.photos/600/400?random=15',
     after: 'https://picsum.photos/600/400?random=25',
-    description: '别墅外墙翻新，提升整体美观度',
+    description: '开放式+封闭式组合书柜设计',
     location: '顺义区'
   }
 ]
 
 const selectedCase = ref(null)
 const showBefore = ref(true)
+const touchStartX = ref(0)
+const touchEndX = ref(0)
 
 const openCase = (caseItem) => {
   selectedCase.value = caseItem
@@ -67,6 +75,44 @@ const closeCase = () => {
 const toggleImage = () => {
   showBefore.value = !showBefore.value
 }
+
+const handleTouchStart = (e) => {
+  touchStartX.value = e.touches[0].clientX
+}
+
+const handleTouchMove = (e) => {
+  touchEndX.value = e.touches[0].clientX
+}
+
+const handleTouchEnd = () => {
+  const diff = touchStartX.value - touchEndX.value
+  const threshold = 50
+  
+  if (Math.abs(diff) > threshold) {
+    toggleImage()
+  }
+  
+  touchStartX.value = 0
+  touchEndX.value = 0
+}
+
+const handleKeyDown = (e) => {
+  if (!selectedCase.value) return
+  
+  if (e.key === 'Escape') {
+    closeCase()
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+    toggleImage()
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeyDown)
+})
 </script>
 
 <template>
@@ -80,8 +126,8 @@ const toggleImage = () => {
       <div class="cases-grid">
         <div v-for="caseItem in cases" :key="caseItem.id" class="case-card" @click="openCase(caseItem)">
           <div class="case-image">
-            <img :src="caseItem.after" :alt="caseItem.title" />
-            <div class="case-badge">翻新后</div>
+            <img :src="caseItem.after" :alt="caseItem.title" loading="lazy" />
+            <div class="case-badge">改造后</div>
           </div>
           <div class="case-info">
             <h3 class="case-title">{{ caseItem.title }}</h3>
@@ -93,7 +139,7 @@ const toggleImage = () => {
     </div>
 
     <Teleport to="body">
-      <div v-if="selectedCase" class="case-modal" @click="closeCase">
+      <div v-if="selectedCase" class="case-modal" @click="closeCase" @touchstart="handleTouchStart" @touchmove="handleTouchMove" @touchend="handleTouchEnd">
         <div class="modal-content" @click.stop>
           <button class="modal-close" @click="closeCase">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -105,18 +151,19 @@ const toggleImage = () => {
           <div class="modal-header">
             <h2>{{ selectedCase.title }}</h2>
             <button class="toggle-btn" @click="toggleImage">
-              {{ showBefore ? '查看翻新后' : '查看翻新前' }}
+              {{ showBefore ? '查看改造后' : '查看改造前' }}
             </button>
           </div>
 
           <div class="modal-image">
             <img :src="showBefore ? selectedCase.before : selectedCase.after" :alt="selectedCase.title" />
-            <div class="image-label">{{ showBefore ? '翻新前' : '翻新后' }}</div>
+            <div class="image-label">{{ showBefore ? '改造前' : '改造后' }}</div>
           </div>
 
           <div class="modal-info">
             <p>{{ selectedCase.description }}</p>
             <p class="modal-location">📍 {{ selectedCase.location }}</p>
+            <p class="modal-hint">💡 左右滑动或点击按钮切换对比图</p>
           </div>
         </div>
       </div>
@@ -231,12 +278,14 @@ const toggleImage = () => {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.9);
-  z-index: 1000;
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: clamp(10px, 3vw, 20px);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
 .modal-content {
@@ -248,6 +297,7 @@ const toggleImage = () => {
   overflow-y: auto;
   position: relative;
   margin: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .modal-close {
@@ -268,6 +318,7 @@ const toggleImage = () => {
   transition: all 0.3s ease;
   min-width: 44px;
   min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .modal-close:hover {
@@ -301,6 +352,7 @@ const toggleImage = () => {
   transition: all 0.3s ease;
   white-space: nowrap;
   min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .toggle-btn:hover {
@@ -348,6 +400,13 @@ const toggleImage = () => {
 .modal-location {
   color: #999;
   font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+}
+
+.modal-hint {
+  color: #3498db;
+  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+  font-weight: 500;
+  margin: 0;
 }
 
 @media (max-width: 1024px) {

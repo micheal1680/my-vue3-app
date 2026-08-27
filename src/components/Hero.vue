@@ -1,6 +1,6 @@
 <script setup>
-const scrollToCases = () => {
-  const element = document.getElementById('cases')
+const scrollToGallery = () => {
+  const element = document.getElementById('gallery')
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' })
   }
@@ -10,7 +10,7 @@ const stats = [
   { value: '500+', label: '完成项目' },
   { value: '10+', label: '年行业经验' },
   { value: '98%', label: '客户满意度' },
-  { value: '50+', label: '可选色彩' }
+  { value: '4', label: '核心业务' }
 ]
 </script>
 
@@ -18,10 +18,10 @@ const stats = [
   <section id="home" class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1 class="hero-title">旧墙翻新 让家焕然一新</h1>
-      <p class="hero-subtitle">专业墙面翻新服务，为您的家注入新的生命力</p>
+      <h1 class="hero-title">家居改造效果展示</h1>
+      <p class="hero-subtitle">厨卫改造 · 柜子定制 · 墙衣施工 · 橱柜吊柜定制</p>
       <div class="hero-buttons">
-        <button class="btn btn-primary" @click="scrollToCases">查看案例</button>
+        <button class="btn btn-primary" @click="scrollToGallery">查看效果</button>
       </div>
       <div class="hero-stats">
         <div v-for="stat in stats" :key="stat.label" class="stat-item">
@@ -100,10 +100,10 @@ const stats = [
   font-size: clamp(0.875rem, 2vw, 1.125rem);
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-width: clamp(120px, 20vw, 160px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -114,50 +114,37 @@ const stats = [
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .btn-primary:active {
   transform: translateY(-1px);
 }
 
-.btn-secondary {
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-}
-
-.btn-secondary:hover {
-  background: white;
-  color: #667eea;
-}
-
-.btn-secondary:active {
-  background: rgba(255, 255, 255, 0.2);
-}
-
 .hero-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: clamp(16px, 4vw, 48px);
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: clamp(16px, 3vw, 24px);
   animation: fadeInUp 0.8s ease 0.6s both;
-  max-width: 800px;
-  margin: 0 auto;
 }
 
 .stat-item {
   text-align: center;
-  padding: clamp(8px, 2vw, 12px);
+  padding: clamp(12px, 2vw, 16px);
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .stat-value {
-  font-size: clamp(1.75rem, 5vw, 3rem);
-  font-weight: 800;
-  margin-bottom: clamp(4px, 1vw, 8px);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 
 .stat-label {
-  font-size: clamp(0.75rem, 2vw, 1rem);
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
   opacity: 0.9;
 }
 
@@ -172,88 +159,46 @@ const stats = [
   }
 }
 
-@media (max-width: 1024px) {
-  .hero-content {
-    padding: clamp(24px, 4vw, 40px) 16px;
-  }
-}
-
 @media (max-width: 768px) {
   .hero {
-    min-height: auto;
-    padding: calc(var(--navbar-height) + 40px) 0 clamp(40px, 8vw, 60px);
+    min-height: 100vh;
+    padding-top: var(--navbar-height);
   }
 
   .hero-content {
-    padding: 20px 12px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 40px;
-    align-items: center;
-  }
-
-  .btn {
-    width: 100%;
-    max-width: 300px;
-    min-height: 48px;
+    padding: 40px 20px;
   }
 
   .hero-stats {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 12px;
+  }
+
+  .stat-item {
+    padding: 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .hero {
-    padding: calc(var(--navbar-height) + 30px) 0 40px;
+  .hero-title {
+    font-size: 1.75rem;
   }
 
-  .hero-content {
-    padding: 16px 10px;
+  .hero-subtitle {
+    font-size: 0.9rem;
   }
 
-  .hero-buttons {
-    margin-bottom: 30px;
-  }
-
-  .btn {
-    padding: 12px 20px;
-    min-width: 120px;
-  }
-}
-
-@media (max-width: 360px) {
-  .hero {
-    padding: calc(var(--navbar-height) + 20px) 0 30px;
-  }
-  
   .hero-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
-}
 
-@media (orientation: landscape) and (max-height: 500px) {
-  .hero {
-    min-height: auto;
-    padding: calc(var(--navbar-height) + 20px) 0 30px;
+  .stat-value {
+    font-size: 1.5rem;
   }
-  
-  .hero-stats {
-    display: none;
-  }
-  
-  .hero-buttons {
-    margin-bottom: 24px;
-  }
-}
 
-@media (hover: none) and (pointer: coarse) {
-  .btn {
-    min-height: 48px;
+  .stat-label {
+    font-size: 0.75rem;
   }
 }
 </style>

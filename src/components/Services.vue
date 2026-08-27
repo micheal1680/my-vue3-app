@@ -1,50 +1,72 @@
 <script setup>
+import { ref } from 'vue'
+
+const emit = defineEmits(['selectCategory'])
+
 const services = [
   {
+    id: 'kitchen-bath',
+    icon: '🚿',
+    title: '厨卫改造',
+    description: '厨房卫生间整体改造，防水、瓷砖、吊顶一站式服务',
+    color: '#3498db',
+    count: '120+ 案例'
+  },
+  {
+    id: 'cabinet-custom',
+    icon: '🗄️',
+    title: '柜子定制',
+    description: '衣柜、书柜、鞋柜等全屋定制，满足个性化收纳需求',
+    color: '#2ecc71',
+    count: '150+ 案例'
+  },
+  {
+    id: 'wall-coat',
     icon: '🎨',
-    title: '墙面刷漆',
-    description: '专业墙面刷漆服务，采用环保水性漆，色彩丰富，持久耐用'
+    title: '墙衣施工效果',
+    description: '环保墙衣材料施工，质感细腻，色彩丰富，持久耐用',
+    color: '#e74c3c',
+    count: '180+ 案例'
   },
   {
-    icon: '🔧',
-    title: '墙面修补',
-    description: '裂缝修补、起皮处理、发霉治理，让墙面恢复平整光滑'
-  },
-  {
+    id: 'cabinet-hanging',
     icon: '🏠',
-    title: '旧墙翻新',
-    description: '整体墙面翻新改造，从设计到施工一站式服务'
-  },
-  {
-    icon: '✨',
-    title: '艺术涂料',
-    description: '硅藻泥、艺术漆、肌理漆等高端装饰材料施工'
-  },
-  {
-    icon: '🛡️',
-    title: '防水处理',
-    description: '卫生间、厨房等潮湿区域专业防水施工'
-  },
-  {
-    icon: '📐',
-    title: '定制设计',
-    description: '根据客户需求提供个性化墙面设计方案'
+    title: '橱柜吊柜定制',
+    description: '厨房橱柜、吊柜专业定制，合理利用空间，美观实用',
+    color: '#f39c12',
+    count: '100+ 案例'
   }
 ]
+
+const selectedService = ref(null)
+
+const handleSelectService = (service) => {
+  selectedService.value = service
+  emit('selectCategory', service.id)
+}
 </script>
 
 <template>
   <section id="services" class="services">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">我们的服务</h2>
-        <p class="section-subtitle">专业团队，品质服务，让您的家焕然一新</p>
+        <h2 class="section-title">展示分类</h2>
+        <p class="section-subtitle">四大核心业务，满足您的家居改造需求</p>
       </div>
       <div class="services-grid">
-        <div v-for="service in services" :key="service.title" class="service-card">
-          <div class="service-icon">{{ service.icon }}</div>
+        <div 
+          v-for="service in services" 
+          :key="service.id" 
+          class="service-card"
+          :class="{ active: selectedService?.id === service.id }"
+          @click="handleSelectService(service)"
+        >
+          <div class="service-icon-wrapper" :style="{ backgroundColor: service.color + '20' }">
+            <div class="service-icon">{{ service.icon }}</div>
+          </div>
           <h3 class="service-title">{{ service.title }}</h3>
           <p class="service-description">{{ service.description }}</p>
+          <div class="service-count" :style="{ color: service.color }">{{ service.count }}</div>
         </div>
       </div>
     </div>
@@ -83,7 +105,7 @@ const services = [
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: clamp(20px, 3vw, 30px);
 }
 
@@ -94,16 +116,51 @@ const services = [
   text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
-.service-card:hover {
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #2ecc71, #e74c3c, #f39c12);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover::before,
+.service-card.active::before {
+  opacity: 1;
+}
+
+.service-card:hover,
+.service-card.active {
   transform: translateY(-10px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
+.service-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon-wrapper {
+  transform: scale(1.1);
+}
+
 .service-icon {
-  font-size: clamp(40px, 6vw, 56px);
-  margin-bottom: 20px;
+  font-size: clamp(36px, 5vw, 48px);
 }
 
 .service-title {
@@ -117,7 +174,16 @@ const services = [
   font-size: clamp(0.875rem, 1.5vw, 16px);
   color: #666;
   line-height: 1.6;
-  margin: 0;
+  margin: 0 0 16px;
+}
+
+.service-count {
+  font-size: clamp(0.8rem, 1.5vw, 14px);
+  font-weight: 600;
+  padding: 6px 16px;
+  background: #f8f9fa;
+  border-radius: 20px;
+  display: inline-block;
 }
 
 @media (max-width: 1024px) {
@@ -126,7 +192,7 @@ const services = [
   }
 
   .services-grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 24px;
   }
 }
@@ -141,12 +207,22 @@ const services = [
   }
 
   .services-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 
   .service-card {
-    padding: 24px 18px;
+    padding: 24px 16px;
+  }
+
+  .service-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 16px;
+  }
+
+  .service-icon {
+    font-size: 32px;
   }
 }
 

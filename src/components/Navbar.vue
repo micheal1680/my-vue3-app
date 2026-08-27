@@ -4,8 +4,8 @@ import { ref } from 'vue'
 const isMenuOpen = ref(false)
 const navItems = [
   { id: 'home', label: '首页' },
-  { id: 'services', label: '服务项目' },
-  { id: 'colors', label: '色卡展示' },
+  { id: 'services', label: '展示分类' },
+  { id: 'gallery', label: '效果画廊' },
   { id: 'cases', label: '案例展示' },
   { id: 'contact', label: '联系方式' }
 ]
