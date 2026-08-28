@@ -10,7 +10,7 @@ const services = [
     title: '厨卫改造',
     description: '厨房卫生间整体改造，防水、瓷砖、吊顶一站式服务',
     color: '#3498db',
-    count: '120+ 案例'
+    count: '120+ 案例'  
   },
   {
     id: 'cabinet-custom',
