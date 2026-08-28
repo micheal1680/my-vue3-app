@@ -174,9 +174,14 @@ const toggleMenu = () => {
   .navbar-menu {
     gap: 4px;
   }
+  
+  .nav-link {
+    padding: clamp(6px, 1.2vw, 8px) clamp(8px, 1.5vw, 12px);
+    font-size: clamp(12px, 1.3vw, 14px);
+  }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .navbar-toggle {
     display: flex;
   }
